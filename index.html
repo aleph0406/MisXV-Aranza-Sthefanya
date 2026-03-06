@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Aranza Sthefanya - Invitación</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter or Montserrat as base, and something elegant -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- We'll try to use a Century Gothic-like font or system font -->
+    <style>
+        @font-face {
+            font-family: 'Century Gothic';
+            src: local('Century Gothic'), local('CenturyGothic'), local('AppleGothic'), sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Friendly Loader -->
+    <div id="loader">
+        <div class="heart-loader"></div>
+    </div>
+
+    <div id="sparkles-container"></div>
+
+    <!-- Popup Initial -->
+    <div id="initial-popup" class="overlay">
+        <div class="popup-content">
+            <h2 class="popup-title">Haz Click Aqui</h2>
+            <div class="envelope-btn" id="entry-btn">
+                <img src="POPUP.png" alt="Entrar" id="popup-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Transition Overlay -->
+    <div id="video-overlay" class="overlay hidden">
+        <video id="intro-video" muted playsinline>
+            <source src="carta.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Main Invitation Content -->
+    <main id="invitation-container" class="hidden">
+        <div id="magazine-flipbook" class="flipbook">
+            <!-- Portada -->
+            <div class="page" data-density="hard">
+                <img src="PORTADA.png" alt="Portada">
+            </div>
+            <!-- Fecha -->
+            <div class="page">
+                <img src="FECHA.png" alt="Fecha">
+            </div>
+            <!-- Ubicación -->
+            <div class="page">
+                <div class="map-container">
+                    <img src="UBICACIÓN.png" alt="Ubicación">
+                    <a href="https://maps.app.goo.gl/LJZicgrGuf8ETmVA7?g_st=aw" target="_blank" class="map-link"
+                        title="Ver Ubicación"></a>
+                </div>
+            </div>
+            <!-- Dress Code -->
+            <div class="page">
+                <img src="DRESSCODE.png" alt="Dress Code">
+            </div>
+            <!-- Album -->
+            <div class="page">
+                <img src="ALBUM.png" alt="Album">
+            </div>
+            <!-- Regalos -->
+            <div class="page">
+                <img src="REGALOS.png" alt="Regalos">
+            </div>
+        </div>
+
+        <div class="magazine-controls">
+            <button id="prev-page" class="nav-btn">← Anterior</button>
+            <button id="next-page" class="nav-btn">Siguiente →</button>
+        </div>
+    </main>
+
+    <!-- Footer Controls -->
+    <footer id="footer-controls">
+        <div class="music-player">
+            <audio id="bg-audio" loop>
+                <source src="walz.mpeg" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <button id="music-toggle" class="music-btn">
+                <span id="play-icon">♪</span>
+                <span id="music-status">Escuchar una linda melodía</span>
+            </button>
+        </div>
+        <div class="countdown-section">
+            <h3 class="countdown-title">FALTAN POCOS DIAS</h3>
+            <div id="countdown-timer">
+                <div class="time-block">
+                    <span id="days">00</span>
+                    <label>Días</label>
+                </div>
+                <div class="time-block">
+                    <span id="hours">00</span>
+                    <label>Horas</label>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">00</span>
+                    <label>Min</label>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">00</span>
+                    <label>Seg</label>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div id="whatsapp-float" class="wa-float hidden">
+        <div class="wa-tooltip">confirma tu asistencia aqui:</div>
+        <a href="https://api.whatsapp.com/send?phone=584124823149&text=Hola,%20confirmo%20mi%20asistencia"
+            target="_blank" class="wa-link">
+            <svg viewBox="0 0 24 24" class="wa-svg">
+                <path
+                    d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.216 8.216 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.82 0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.66.81-.81.99-.15.17-.31.2-.56.07-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.23.25-.39.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.07-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
